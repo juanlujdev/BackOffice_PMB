@@ -54,3 +54,16 @@ for(let i=1;i<=num;i++){
     total=total*i;
 }
 console.log("el resultado es: "+ total);
+
+//ACTIVIDAD 6.1
+
+let number=prompt("escribe un numero entero");
+function esPar(number){
+    if (number%2==0){
+        return "es par";
+    }
+    else{
+        return "es impar";
+    }
+}
+console.log (esPar(number));
