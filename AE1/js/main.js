@@ -81,3 +81,32 @@ function absoluto(numAbs){
     }
 }
 console.log (absoluto(numberAbsoluto));
+
+//ACTIVIDAD 8.1
+
+let numUser=prompt("escribe un numero del 1 al 12");
+
+function lucky(numberUser){
+    var aleatorio=Math.random();    
+    aleatorio=Math.round(aleatorio*12);
+    if(numberUser==aleatorio){
+        return "Felicitaciones! su numero: "+ numUser + " es el mismo que el generado aleatoriamente: " + aleatorio;
+    }
+    else{
+        return "Lo siento, su numero: "+ numUser + " es diferente que el generado aleatoriamente: "+ aleatorio;
+    }
+}
+if((numUser>=1)&&(numUser<=12)){
+    console.log (lucky(numUser));
+}
+else{
+    do{
+        numUser=prompt("numero erroneo vuelva a escribir un numero del 1 al 12");
+    
+    }
+    while((numUser<=0)||(numUser>12));
+    console.log (lucky(numUser));
+}
+
+
+
