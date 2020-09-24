@@ -45,3 +45,12 @@ if((numero1<0)||(numero1!=0)){
 if ((numero1+1!=numero2)||(numero1+1<numero2)){
     console.log("incrementar en 1 unidad el valor de  numero1 no lo hace mayor o igual que numero2.");
 }
+
+//ACTIVIDAD 5.1
+
+var num=5;
+var total=1
+for(let i=1;i<=num;i++){
+    total=total*i;
+}
+console.log("el resultado es: "+ total);
