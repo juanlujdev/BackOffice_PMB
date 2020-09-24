@@ -19,3 +19,11 @@ console.log(mensaje);
 
 let meses2=["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio","agosto","septiembre","octubre","noviembre","diciembre"]
 console.table(meses2);
+
+//ACTIVIDAD 3.1
+
+const values=[true,false,5,"hola",[1,2,3],{age:2,gender:'male'}];
+for (let i=0;i<values.length;i++){
+    var dato=values[i];
+   console.log(typeof dato);
+}
