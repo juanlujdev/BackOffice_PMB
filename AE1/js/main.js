@@ -67,3 +67,17 @@ function esPar(number){
     }
 }
 console.log (esPar(number));
+
+//ACTIVIDAD 7.1
+
+let numberAbsoluto=prompt("escribe un valor absoluto");
+
+function absoluto(numAbs){
+    if(numAbs<0){
+        return "el valor absoluto es: "+ numAbs*-1;
+    }
+    else{
+        return "el valor absoluto es: "+ numAbs;
+    }
+}
+console.log (absoluto(numberAbsoluto));
