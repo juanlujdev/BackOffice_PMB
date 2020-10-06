@@ -35,3 +35,21 @@ function findMinimun(values){
     return values.reduce((acumulador, item) => acumulador < item ? acumulador : item);//si acumulador es mayor que item devuelves "?"acumulador si no ":"devuelvo item
 }
 console.log(findMinimun([3,5,2,8]));
+
+//AE2_4
+
+function findGreaterThan(x,values){
+    var mayores=true;
+    values.reduce ((acum,item) => item < x ? mayores=false : null);    
+    return mayores;
+
+}
+console.log(findGreaterThan(5,[9,1,9,6]));
+
+//funcion flecha
+/*
+const findGreaterThan2=(x,values)=>{
+    var mayores=true;
+    values.reduce ((acum,item) => item < x ? mayores=false : null);    
+    return mayores;}
+    */
