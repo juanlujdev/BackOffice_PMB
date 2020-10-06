@@ -21,9 +21,17 @@ console.log(newValores2);
 
 //AE2_2
 function average(a,b){   
+    if(dataArray.length>0){
+        return  a+b;
+    }
     
-    return  a+b;
 }
-let dataArray=[7,4,1,9,10];
+let dataArray=[3,5,77,8];
 console.log(dataArray.reduce(average,0)/dataArray.length);
 
+//AE2_3
+
+function findMinimun(values){
+    return values.reduce((acumulador, item) => acumulador < item ? acumulador : item);//si acumulador es mayor que item devuelves "?"acumulador si no ":"devuelvo item
+}
+console.log(findMinimun([3,5,2,8]));
