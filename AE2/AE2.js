@@ -53,3 +53,35 @@ const findGreaterThan2=(x,values)=>{
     values.reduce ((acum,item) => item < x ? mayores=false : null);    
     return mayores;}
     */
+   //Con every
+  /* const findGreaterThan3=(x,value)=>
+       value.every( value => value > x);    
+   console.log(findGreaterThan3(5,[7,8,6]));*/
+
+   //AE2_5
+/*
+const values2=[4,5];
+function multiFactorial2(arr){
+    arr.map(fact(item));//como llamo a la funcion fact pra pasarle el item??
+    function fact(item){
+        let acc=1;//acumulador
+       for(let i=1;i<=item;i++){
+           acc*=i;
+           return acc;
+       }
+    }
+}
+console.log(multiFactorial2(values2));
+*/
+
+
+
+const multiFactorial = arr => arr.map(item => {
+    let acumulador = 1;
+    for(i = 1; i <= item; i++){acumulador *=i}
+    return acumulador;
+ } );
+const values = [3,5,7]
+console.log(multiFactorial(values));
+
+//AE2_6
