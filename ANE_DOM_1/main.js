@@ -22,11 +22,21 @@
             
             const changeDecoration= () => {
                 const changeDecoration=document.getElementsByTagName('a');
-                [...changeDecoration].forEach(element => ? element.style.removeAttribute('background-color'):);
-                if (bodyStyle.removeAttribute)
-       bodyStyle.removeAttribute('background-color');
-else        
-       bodyStyle.removeProperty('background-color');
-            } 
+                [...changeDecoration].forEach(element =>{
+                    element.style.textDecoration='none';
+                    element.style.color='white';
+                    element.addEventListener("mouseover",up);
+                    element.addEventListener("mouseout",down)                                                   
+            }); 
+            /*const up = () => {
+                this.style.color = "orange";
+            }*/
+            function up() {
+                this.style.color = "orange";
+            }
+            function down() {
+                this.style.color = "white";            
+            }
+            }
 
        
