@@ -3,6 +3,7 @@
                 changeTitle();
                 addId();
                 halfFontSize();
+                changeDecoration();
             });
             const changeTitle= () => {
                 document.title = 'Ahora trabajo con DOM Dinmico';
@@ -16,8 +17,16 @@
             }
             const halfFontSize= () => {
                 const halfLetter=document.getElementsByTagName('p');
-                [...halfLetter].forEach(element => element.style.fontSize = '15px');           
+                [...halfLetter].forEach(element => element.style.fontSize = '0.5em');           
             }
             
+            const changeDecoration= () => {
+                const changeDecoration=document.getElementsByTagName('a');
+                [...changeDecoration].forEach(element => ? element.style.removeAttribute('background-color'):);
+                if (bodyStyle.removeAttribute)
+       bodyStyle.removeAttribute('background-color');
+else        
+       bodyStyle.removeProperty('background-color');
+            } 
 
        

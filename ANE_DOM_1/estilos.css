@@ -1,5 +1,5 @@
 /*Estilo del boton*/
-#button {
+.button {
     text-decoration: none;
           padding: 10px;
           font-weight: 600;
