@@ -92,6 +92,16 @@
                 //objetoDOM.removeAttribute("disabled");
             }
             const changePicture= () =>{
-                var button = document.getElementsByTagName('button')
+                var button = document.getElementsByTagName('button');
+                [...button].forEach(element => element.addEventListener('click',() => {
+                    var image=document.getElementsByTagName('img');
+                    [...image].forEach(img => {
+                        img.src=("https://www.enriquedans.com/wp-content/uploads/2018/06/GitHub-Octocat.jpg");
+                    });
+                    element.disabled=true;
+                    element.style.backgroundColor="gray";
+                }
+                )
+                )     
             }
                   
