@@ -7,75 +7,74 @@
     <title>Formulario</title>
 </head>
     <body>
-        <div id=cabecera>
-            <button id="atras" type="button" class="button">Atrás</button>
-            <button id="continuar" type="button" class="button" disabled>Continuar</button>            
-        </div>       
-        <div id="centrado">
-            <section ><h1>Formulario de inscripción</h1>
-                <article>
-                    <p class="texto">El paso 1 Introduccion de url y título y descripción centrados</p>
-                    <p class="texto">El paso 2 Rellenar formulario</p>
-                    <p class="texto">El paso 3 Visualización de los datos</p>
-                    <p class="texto">El paso 4 Envio a la pagina URL introducida en el paso1</p>
+        <section id="paso1">        
+            <div id=cabecera>
+                <button id="atras" type="button" class="button" style="background-color: #1883ba;">Atrás</button>
+                <button id="continuar" type="button" class="button" disabled style="background-color: #1883ba;" >Continuar</button>            
+            </div>       
+            <div class="centrado" id="centrado">
+                <h1>Formulario de inscripción</h1>
+                    <article>
+                        <p class="texto">El paso 1 Introduccion de url y título y descripción centrados</p>
+                        <p class="texto">El paso 2 Rellenar formulario</p>
+                        <p class="texto">El paso 3 Visualización de los datos</p>
+                        <p class="texto">El paso 4 Envio a la pagina URL introducida en el paso1</p>
 
-                </article>
-                <br>
-                <p>Introduce aqui la url</p>
-            <input id="cadena" type="text" size="75" name="url">  
-            </section>
-        </div> 
-        
-        
+                    </article>
+                    <br>
+                    <p>Introduce aqui la url</p>
+                <input id="cadena" type="text" size="75" name="url">  
+            </div>
+        </section>
+                
         <fieldset id="muestraError" hidden>            
         </fieldset> 
-        <div id="formulario" hidden >            
+        <section id="formulario" hidden >  
+            <div id=cabecera>
+                <button id="atras" type="button" class="button" style="background-color: #1883ba;">Atrás2</button>
+                <button id="continuar" type="button" class="button" disabled style="background-color: #1883ba;" >Continuar2</button>            
+            </div> 
+            <div class="centrado">         
             
             <form id="datos">
+                  
                 <br><br><br><br><br>
-                <label for="nombre">Nombre y apellidos</label>
-                <input id="nombre" size="15" required><label id="asterisk"> *</label>      
-                <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="nombre">Nombre y apellidos</label><label id="asterisk"> *</label>
+                <input id="nombre" size="15" required>      
+                <br>               
                 <input id="ErrorName" class="error" size="15" required value="Falta el dato"disabled hidden >
                 <br>
-                <label for="date">Fecha de nacimineto</label>
-                <input type="date" name="date" id="date" required><label id="asterisk"> *</label>
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="date">Fecha de nacimineto</label><label id="asterisk"> *</label>
+                <input type="date" name="date" id="date" required>
+                <br>
                 <input id="ErrorDate" class="error" size="15" required value="Falta el dato"disabled hidden>
                 <br>
                 <label for="direccion">Direccion</label>
                 <input id="direccion" size="15">
-                <br><br>
-                <label for="cp">Codigo postal</label>
-                <input id="cp" size="5" minlength="5" maxlength="5" required><label id="asterisk"> *</label>
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;
+                <input id="errorDireccion" class="error" size="15" value="No es alfa-numerico" disabled hidden>
+                <br>
+                <label for="cp">Codigo postal</label><label id="asterisk"> *</label>
+                <input id="cp" size="5" minlength="5" maxlength="5" required>
+                <br>               
                 <input id="ErrorCp" class="error" size="15" required value="Falta el dato"disabled hidden>
                 <br>
-                <label for="provincia">Provincia</label> 
+                <label for="provincia">Provincia</label><label id="asterisk"> *</label> 
                 <select name="provincia" id="provincia">
                     <option value="Valencia">Valencia</option>
                     <option value="Alicante">Alicante</option>
                     <option value="Castellón">Castellón</option>
-                </select><label id="asterisk"> *</label>
+                </select>
                 <br><br>
-                <label for="municipio">Municipio</label>
-                <input type="text" id="municipio" size="15" style="text-transform: uppercase;"required><label id="asterisk"> *</label>
-                <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;
+                <label for="municipio">Municipio</label><label id="asterisk"> *</label>
+                <input type="text" id="municipio" size="15" style="text-transform: uppercase;"required>
+                <br>       
                 <input id="ErrorMunicipio" class="error" size="15" required value="Falta el dato"disabled hidden> 
                 <br>                        
                 <button id="continuar" type="button" class="button" onclick="validarFormulario()">Continuar2</button>
               </form>
-            
-        </div>   
-
-            
+            </div>            
+        </section>
 
     </body>
 </html>
