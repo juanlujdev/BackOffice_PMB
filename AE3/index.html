@@ -9,8 +9,8 @@
     <body>
         <section id="paso1">        
             <div id=cabecera>
-                <button id="atras" type="button" class="button" style="background-color: #1883ba;">Atrás</button>
-                <button id="continuar" type="button" class="button" disabled style="background-color: #1883ba;" >Continuar</button>            
+                <button id="atras" type="button" class="button" disabled>Atrás</button>
+                <button id="continuar" type="button" class="button"disabled>Continuar</button>            
             </div>       
             <div class="centrado" id="centrado">
                 <h1>Formulario de inscripción</h1>
@@ -27,13 +27,14 @@
             </div>
         </section>
                 
-        <fieldset id="muestraError" hidden>            
-        </fieldset> 
-        <section id="formulario" hidden >  
+        
+        <section id="paso2" hidden >  
             <div id=cabecera>
-                <button id="atras" type="button" class="button" style="background-color: #1883ba;">Atrás2</button>
-                <button id="continuar" type="button" class="button" disabled style="background-color: #1883ba;" >Continuar2</button>            
+                <button id="atras2" type="button" class="button">Atrás</button>
+                <button id="continuar2" type="button" class="button" >Continuar</button>            
             </div> 
+            <fieldset id="muestraError" hidden>            
+            </fieldset> 
             <div class="centrado">         
             
             <form id="datos">
@@ -42,22 +43,22 @@
                 <label for="nombre">Nombre y apellidos</label><label id="asterisk"> *</label>
                 <input id="nombre" size="15" required>      
                 <br>               
-                <input id="ErrorName" class="error" size="15" required value="Falta el dato"disabled hidden >
+                <input id="ErrorName" class="error" size="15" required value="Error en el dato"disabled hidden >
                 <br>
                 <label for="date">Fecha de nacimineto</label><label id="asterisk"> *</label>
                 <input type="date" name="date" id="date" required>
                 <br>
-                <input id="ErrorDate" class="error" size="15" required value="Falta el dato"disabled hidden>
+                <input id="ErrorDate" class="error" size="15" required value="Error en el dato"disabled hidden>
                 <br>
                 <label for="direccion">Direccion</label>
                 <input id="direccion" size="15">
                 <br>
-                <input id="errorDireccion" class="error" size="15" value="No es alfa-numerico" disabled hidden>
+                <input id="errorDireccion" class="error" size="15" value="Error en el dato" disabled hidden>
                 <br>
                 <label for="cp">Codigo postal</label><label id="asterisk"> *</label>
                 <input id="cp" size="5" minlength="5" maxlength="5" required>
                 <br>               
-                <input id="ErrorCp" class="error" size="15" required value="Falta el dato"disabled hidden>
+                <input id="ErrorCp" class="error" size="15" required value="Error en el dato"disabled hidden>
                 <br>
                 <label for="provincia">Provincia</label><label id="asterisk"> *</label> 
                 <select name="provincia" id="provincia">
@@ -69,12 +70,32 @@
                 <label for="municipio">Municipio</label><label id="asterisk"> *</label>
                 <input type="text" id="municipio" size="15" style="text-transform: uppercase;"required>
                 <br>       
-                <input id="ErrorMunicipio" class="error" size="15" required value="Falta el dato"disabled hidden> 
+                <input id="ErrorMunicipio" class="error" size="15" required value="Error en el dato"disabled hidden> 
                 <br>                        
-                <button id="continuar" type="button" class="button" onclick="validarFormulario()">Continuar2</button>
+                
               </form>
             </div>            
         </section>
+        <section id="paso3" hidden >  
+            <div id=cabecera>
+                <button id="atras3" type="button" class="button">Atrás</button>
+                <label>Acepte los datos o vuelva atrás</label>
+                <button id="continuar3" type="button" class="button">Continuar</button>            
+            </div> 
+            <fieldset id="muestraOk"> 
+            </fieldset>
+        </section>
+        <section id="paso4" hidden>  
+            <div id=cabecera>
+                <button id="atras4" type="button" class="button" disabled>Atrás</button>
+                <label>Acepte los datos o vuelva atrás</label>
+                <button id="continuar4" type="button" class="button" disabled>Continuar</button>            
+            </div> 
+            <div class="centrado">
+                <button id="terminar" type="button" class="button" style="background-color: #1883ba; width: 274px; height: 90px;">Terminar</button>
+            </div>
+        </section>
+
 
     </body>
 </html>

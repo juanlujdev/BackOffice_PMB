@@ -1,5 +1,13 @@
 /*Estilo del boton*/
+.button:disabled{
+    background-color: #ca9443e1;
+    display: inline-block;      
+    font-size: 15px;
+    color: black;    
+    border-radius: 3px;    
+}
 .button {
+    background-color: #1883ba;
     display: inline-block;      
     font-size: 15px;
     color: #ffffff;    
@@ -47,6 +55,7 @@
 }
 #muestraOk{
     color: green;
+    background-color: rgb(252, 252, 111);
 }
     
     
