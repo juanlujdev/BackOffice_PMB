@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded',() => {
     volverPaso2();
     irPaso4();
     terminar();
-    
 });    
     let text;
     let url;
@@ -15,7 +14,8 @@ document.addEventListener('DOMContentLoaded',() => {
         //escucho si se teclea alguna tecla y si es asi voy a la funcion
         //PARA HACER CTRL+C Y CTRL+V NO LO DETECTA ASI Q LO QUE HARE ES ESCUCHAR SI SE HACER CLICK EN LA CAJA DE TEXTO Y LUEGO
         //COMPROBARE SI HAY MAS DE UN CARACTER EN LA CAJA, CON LOS IF QUE TENGO MAS ABAJO
-        text.addEventListener('blur', getEventType);
+        text.addEventListener('paste', getEventType);
+        text.addEventListener('keyup',getEventType);
         function getEventType() {
             //guardo el valor que hay en la caja de texto en una variable, para comprobar en todo momento si esta borrado lo q teclee
             // o no, esta variable es solo de para comprobar
@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded',() => {
                     //guardo en la url la direccion
                     url=document.getElementById('cadena').value; 
                     //es para comprobar que se guarda la direccion
-                    //console.log(url);
                     //oculto y muestro formulario y centrado
                     const paso2=document.getElementById('paso2');
                     const centrado=document.getElementById('centrado');
@@ -36,51 +35,11 @@ document.addEventListener('DOMContentLoaded',() => {
                     paso1.setAttribute('hidden','true');
                     paso2.removeAttribute('hidden');
                     centrado.setAttribute('hidden','true');
-                    //botonContinuar.id="aceptarCampo";
-                });
-                //botonContinuar.disabled=true;
-                /*
-                    if(botonContinuar.disabled==true){
-                        botonContinuar.disabled=false;                    
-                        botonContinuar.addEventListener('click',() => {                
-                            //guardo en la url la direccion
-                            url=document.getElementById('cadena').value; 
-                            //es para comprobar que se guarda la direccion
-                            //console.log(url);
-                            //oculto y muestro formulario y centrado
-                            const paso2=document.getElementById('paso2');
-                            const centrado=document.getElementById('centrado');
-                            const paso1=document.getElementById('paso1');
-                            paso1.setAttribute('hidden','true');
-                            paso2.removeAttribute('hidden');
-                            centrado.setAttribute('hidden','true');
-                            botonContinuar.id="aceptarCampo";
-                    }   
-                        );
-                
-                }
-                else{
-                    otonContinuar.addEventListener('click',() => {                
-                        //guardo en la url la direccion
-                        url=document.getElementById('cadena').value; 
-                        //es para comprobar que se guarda la direccion
-                        //console.log(url);
-                        //oculto y muestro formulario y centrado
-                        const paso2=document.getElementById('paso2');
-                        const centrado=document.getElementById('centrado');
-                        const paso1=document.getElementById('paso1');
-                        paso1.setAttribute('hidden','true');
-                        paso2.removeAttribute('hidden');
-                        centrado.setAttribute('hidden','true');
-                        botonContinuar.id="aceptarCampo";
-                    });
-                } */                      
-            
-            
+                    
+                });                
             }
             else{
                 botonContinuar.disabled=true;
-                //botonContinuar.style.backgroundColor="grey";
             }   
         }         
     }
@@ -89,9 +48,6 @@ document.addEventListener('DOMContentLoaded',() => {
         terminarButton.addEventListener('click',()=>{           
             location.href='https://'+url;
         })
-
-        //window.location="url";
-        //console.log("web nueva");
     }
     const irPaso4 = () => {
         const continuar3=document.getElementById('continuar3');
@@ -163,7 +119,6 @@ document.addEventListener('DOMContentLoaded',() => {
         else{
             dateError.setAttribute('hidden','true');
         }
-        //const caracteres= /^[\sa-zA-Z0-9]+$/;
         if((direccion!="")&&(!(caracteres.test(direccion)))){
             activacion=true;
             message+="Direccion \n";
@@ -213,8 +168,6 @@ document.addEventListener('DOMContentLoaded',() => {
             paso2.setAttribute('hidden','true');
             paso3.removeAttribute('hidden');
             muestraOk.innerText=salida;
-            
-            
         }
     }     
 
