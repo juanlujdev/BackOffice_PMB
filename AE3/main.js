@@ -1,3 +1,4 @@
+'use strict'
 document.addEventListener('DOMContentLoaded',() => {
     validar();
     aceptarFormulario();
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded',() => {
         else{
             cpError.setAttribute('hidden','true');
         }
-        if(municipio===""){
+        if((municipio==="")||!(caracteres.test(municipio))){
             activacion=true;
             message+="Municipio \n";            
             municipioError.removeAttribute('hidden');
@@ -159,7 +160,7 @@ document.addEventListener('DOMContentLoaded',() => {
             datos.municipio=municipio;
             const datosJson=JSON.stringify(datos);
             const miObjeto=JSON.parse(datosJson);
-            for(i in miObjeto){
+            for(const i in miObjeto){
                 salida +=  i+ "=" + miObjeto[i] + '\n';
             }
             const paso3=document.getElementById('paso3');
