@@ -1,4 +1,3 @@
-/*Estilo del boton*/
 .button:disabled{
     background-color: #ca9443e1;
     display: inline-block;      

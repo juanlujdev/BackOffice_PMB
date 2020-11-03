@@ -9,34 +9,23 @@ document.addEventListener('DOMContentLoaded',() => {
 });    
     let text;
     let url;
-     
     const validar = () => {
         text=document.getElementById('cadena');
-        //escucho si se teclea alguna tecla y si es asi voy a la funcion
-        //PARA HACER CTRL+C Y CTRL+V NO LO DETECTA ASI Q LO QUE HARE ES ESCUCHAR SI SE HACER CLICK EN LA CAJA DE TEXTO Y LUEGO
-        //COMPROBARE SI HAY MAS DE UN CARACTER EN LA CAJA, CON LOS IF QUE TENGO MAS ABAJO
         text.addEventListener('paste', getEventType);
         text.addEventListener('keyup',getEventType);
         function getEventType() {
-            //guardo el valor que hay en la caja de texto en una variable, para comprobar en todo momento si esta borrado lo q teclee
-            // o no, esta variable es solo de para comprobar
             const cont=document.getElementById('cadena').value;
             const botonContinuar=document.getElementById('continuar');
-            //si hay mas de 0 caracteres habilito el boton y guardo en la var url la direccion
             if(cont.length>0){
                 botonContinuar.disabled=false;                    
-                botonContinuar.addEventListener('click',() => {                
-                    //guardo en la url la direccion
-                    url=document.getElementById('cadena').value; 
-                    //es para comprobar que se guarda la direccion
-                    //oculto y muestro formulario y centrado
+                botonContinuar.addEventListener('click',() => {
+                    url=document.getElementById('cadena').value;
                     const paso2=document.getElementById('paso2');
                     const centrado=document.getElementById('centrado');
                     const paso1=document.getElementById('paso1');
                     paso1.setAttribute('hidden','true');
                     paso2.removeAttribute('hidden');
                     centrado.setAttribute('hidden','true');
-                    
                 });                
             }
             else{
