@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded',() => {
                     paso1.setAttribute('hidden','true');
                     paso2.removeAttribute('hidden');
                     centrado.setAttribute('hidden','true');
+                    //llamo a la funcion si tiene la persistencia datos los cargue
+                    getDatosForm();
                 });                
             }
             else{
@@ -54,6 +56,8 @@ document.addEventListener('DOMContentLoaded',() => {
     const volverPaso2= () => {
         const atras3=document.getElementById('atras3');
         atras3.addEventListener('click',volverFormulario);
+        //LLamo a la funion donde tiene cargado la persistencia del objeto
+        getDatosForm();
     }
     const formularioTerminar= ()=>{
         const paso3=document.getElementById('paso3');
@@ -149,9 +153,13 @@ document.addEventListener('DOMContentLoaded',() => {
             datos.municipio=municipio;
             const datosJson=JSON.stringify(datos);
             const miObjeto=JSON.parse(datosJson);
+            //funcion mando el objeto de datos        
+            localStorageDatosForm(datosJson);
             for(const i in miObjeto){
                 salida +=  i+ "=" + miObjeto[i] + '\n';
             }
+            
+            
             const paso3=document.getElementById('paso3');
             const paso2=document.getElementById('paso2');
             const muestraOk=document.getElementById('muestraOk');
@@ -159,7 +167,29 @@ document.addEventListener('DOMContentLoaded',() => {
             paso3.removeAttribute('hidden');
             muestraOk.innerText=salida;
         }
+        
     }     
+    //guardamos en localStorage el objeto como texto (por el stringify)
+    function localStorageDatosForm(datos){
+        localStorage.setItem('localDatosForm',datos);
+    }
+    //funcion recojo datos del local storage
+    function getDatosForm(){
+        var datosJson;
+        var storedList=localStorage.getItem('localDatosForm');
+        if(storedList==null){
+            datosJson=[];
+        }
+        else{
+            datosJson=JSON.parse(storedList);
+            var name2=document.getElementById('nombre').value;
+            for(const i in datosJson){
+               name2=datosJson[i];
+            }
+
+        }
+        //return datosJson;
+    }
 
     
 
