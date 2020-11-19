@@ -1,0 +1,23 @@
+{
+  "name": "ae3_dom_formularios",
+  "version": "1.0.0",
+  "description": "aplicación asistente para la recopilación de datos de un usuario",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alumnoflorida2919/2PMDM.git"
+  },
+  "keywords": [
+    "formulario",
+    "asistente"
+  ],
+  "author": "Juan Lujan Lopez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alumnoflorida2919/2PMDM/issues"
+  },
+  "homepage": "https://github.com/alumnoflorida2919/2PMDM#readme"
+}
