@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+.dataUser{
+  background-color: #61dafb;
+  padding: 1em;
+  flex-direction: row;
+  display: flex;
+  height: 140px;
+  width: 518px;
+  justify-content: space-between;
+}
+.picture{
+  width: 70px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}

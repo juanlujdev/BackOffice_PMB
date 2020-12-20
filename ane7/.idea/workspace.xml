@@ -4,6 +4,7 @@
     <list default="true" id="cebad8e8-d13a-43e9-a870-0710b7ac65d0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ListUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListUser.js" afterDir="false" />
     </list>
@@ -73,7 +74,10 @@
       <updated>1608302571988</updated>
       <workItem from="1608302576648" duration="6225000" />
       <workItem from="1608369961944" duration="5585000" />
-      <workItem from="1608392869465" duration="14264000" />
+      <workItem from="1608392869465" duration="15190000" />
+      <workItem from="1608455132668" duration="2386000" />
+      <workItem from="1608462014006" duration="130000" />
+      <workItem from="1608482689993" duration="2762000" />
     </task>
     <servers />
   </component>
