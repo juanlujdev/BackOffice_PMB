@@ -1,8 +1,8 @@
 .App {
     text-align: center;
     background-color: beige;
-    height: 1280px;
-    width: 1024px;
+    height: 1024px;
+    width: 768px;
     flex-direction: column;
     display: flex;
 }
@@ -15,8 +15,7 @@
 }
 
 .fiter {
-    display: flex;
-    flex-direction: row;
+
     background-color: blanchedalmond;
     justify-content:space-between;
 }
