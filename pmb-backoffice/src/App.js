@@ -42,7 +42,7 @@ export default class App extends React.Component {
             <div className="App">
                 <Fragment>
                    <TabMenuDemo/>
-                    <div className={'display'}>
+                    <div>
                         <Switch>
                             <Route path={'/users'}>
                                 <UsersView/>

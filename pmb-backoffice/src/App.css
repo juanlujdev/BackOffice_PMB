@@ -1,14 +1,21 @@
-.App{
+.App {
     text-align: center;
     background-color: beige;
-    height: 350px;
-    width: 550px;
+    height: 1024px;
+    width: 768px;
     flex-direction: column;
     display: flex;
 }
-.display{
+
+.display {
     border: solid 1px darkgray;
     background-color: beige;
     display: flex;
     flex-direction: row;
+}
+
+.fiter {
+
+    background-color: blanchedalmond;
+    justify-content:space-between;
 }
