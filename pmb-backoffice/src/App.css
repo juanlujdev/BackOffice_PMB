@@ -15,7 +15,7 @@
 }
 
 .fiter {
-
+    display: flex;
     background-color: blanchedalmond;
-    justify-content:space-between;
+    justify-content: space-between;
 }

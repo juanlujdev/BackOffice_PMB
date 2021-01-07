@@ -1,14 +1,18 @@
 import * as React from "react";
+import {Fragment} from "react";
+
+import {SplitButton} from 'primereact/splitbutton';
 import {InputText} from "primereact/inputtext";
 import {Button} from "primereact/button";
 import {DataTable} from "primereact/datatable";
 import {Column} from "primereact/column";
+
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import {Fragment} from "react";
+
 import axios from "axios";
-import {SplitButton} from 'primereact/splitbutton';
+
 
 export class UsersView extends React.Component {
 
@@ -22,17 +26,23 @@ export class UsersView extends React.Component {
             stateInputName: false,
             stateInputSurname: false,
             stateInputEmail: false,
-            hide:true,
+            hide: true,
+            deleteEmail: '',
+            hide2: true,
             items: [
                 {
                     label: 'Eliminar usuario',
                     icon: 'pi pi-trash',
-                    command: (e) => {this.setState({hide: !this.state.hide})
+                    command: (e) => {
+                        this.setState({hide: !this.state.hide, hide2: true})
                     }
                 },
                 {
                     label: 'Restablecer clave',
-                    icon: 'pi pi-user-edit'
+                    icon: 'pi pi-user-edit',
+                    command: (e) => {
+                        this.setState({hide2: !this.state.hide2, hide: true})
+                    }
                 }
             ]
         }
@@ -43,16 +53,26 @@ export class UsersView extends React.Component {
         return (
             <Fragment>
                 <div className={'fiter'}>
-                    <InputText onChange={this.getByName} disabled={this.state.stateInputName} placeholder="Nombre"/>
-                    <InputText onChange={this.getBySurname} disabled={this.state.stateInputSurname}
+                    <InputText style={{width: '15%'}} onChange={this.getByName} disabled={this.state.stateInputName}
+                               placeholder="Nombre"/>
+                    <InputText style={{width: '25%'}} onChange={this.getBySurname}
+                               disabled={this.state.stateInputSurname}
                                placeholder="Apellidos"/>
                     <InputText onChange={this.getByEmail} disabled={this.state.stateInputEmail} placeholder="Email"/>
                     <Button onClick={this.viewFilterUser} label="Buscar" icon="pi pi-check"/>
-                    <SplitButton label="Filtrar" model={this.state.items}/>
+                    <SplitButton style={{width: '15%'}} label="Filtrar" model={this.state.items} icon="pi pi-filter"/>
                 </div>
+                {/*con el value= guardo en el value lo que tiene en el input, y con el metodo getBynameDelete
+                lo que hago es que deleteEmail sea igual al value para poder trabajarlo*/}
                 <div hidden={this.state.hide}>
                     <h5>Eliminar usuario</h5>
+                    <InputText onChange={this.getByEmailDelete} value={this.state.deleteEmail} placeholder="Email"/>
+                    <Button onClick={this.deleteUser} label="Eliminar"/>
+                </div>
+                <div hidden={this.state.hide2}>
+                    <h5>Restablecer clave</h5>
                     <InputText placeholder="Email"/>
+                    <InputText placeholder="Nueva clave"/>
                     <Button label="Eliminar"/>
                 </div>
                 <div>
@@ -128,5 +148,18 @@ export class UsersView extends React.Component {
                     this.getInfoUser();
                 }
             })
+    }
+    getByEmailDelete = (eventInput) => {
+        this.setState({deleteEmail: eventInput.target.value})
+    }
+    deleteUser = () => {
+        axios.delete('https://localhost:44301/api/usuarios?usuarioId=' + this.state.deleteEmail).then((resultRequest) => {
+            this.setState({deleteEmail: ''});
+            this.setState({userInfoData: resultRequest.data},
+                () => {
+                    this.getInfoUser();
+                });
+        })
+
     }
 }
