@@ -8,6 +8,7 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import {Fragment} from "react";
 import axios from "axios";
+import {SplitButton} from 'primereact/splitbutton';
 
 export class UsersView extends React.Component {
 
@@ -16,9 +17,24 @@ export class UsersView extends React.Component {
         this.state = {
             userInfoData: [],
             name: '',
+            surname: '',
+            email: '',
             stateInputName: false,
             stateInputSurname: false,
             stateInputEmail: false,
+            hide:true,
+            items: [
+                {
+                    label: 'Eliminar usuario',
+                    icon: 'pi pi-trash',
+                    command: (e) => {this.setState({hide: !this.state.hide})
+                    }
+                },
+                {
+                    label: 'Restablecer clave',
+                    icon: 'pi pi-user-edit'
+                }
+            ]
         }
         this.getInfoUser();
     }
@@ -32,6 +48,12 @@ export class UsersView extends React.Component {
                                placeholder="Apellidos"/>
                     <InputText onChange={this.getByEmail} disabled={this.state.stateInputEmail} placeholder="Email"/>
                     <Button onClick={this.viewFilterUser} label="Buscar" icon="pi pi-check"/>
+                    <SplitButton label="Filtrar" model={this.state.items}/>
+                </div>
+                <div hidden={this.state.hide}>
+                    <h5>Eliminar usuario</h5>
+                    <InputText placeholder="Email"/>
+                    <Button label="Eliminar"/>
                 </div>
                 <div>
                     <DataTable value={this.state.userInfoData}>
@@ -55,10 +77,21 @@ export class UsersView extends React.Component {
         })
     }
     viewFilterUser = () => {
-        if (this.name != '') {
-            axios.get('https://localhost:44301/api/usuarios?name=' + this.state.name).then((resultRequest) =>
-            {
+        if (this.state.name != '') {
+            axios.get('https://localhost:44301/api/usuarios?name=' + this.state.name).then((resultRequest) => {
                 this.setState({userInfoData: resultRequest.data})
+            })
+        }
+        if (this.state.surname != '') {
+            axios.get('https://localhost:44301/api/usuarios?surname=' + this.state.surname).then((resultRequest) => {
+                this.setState({userInfoData: resultRequest.data})
+            })
+        }
+        if (this.state.email != '') {
+            console.log('El mail es: ' + this.state.email)
+            axios.get('https://localhost:44301/api/usuarios?email=' + this.state.email).then((resultRequest) => {
+                this.setState({userInfoData: resultRequest.data})
+                console.log(this.state.userInfoData);
             })
         }
     }
@@ -75,9 +108,9 @@ export class UsersView extends React.Component {
 
     }
     getByEmail = (eventInput) => {
-        this.setState({name: eventInput.target.value},
+        this.setState({email: eventInput.target.value},
             () => {
-                if (this.state.name.length > 0) {
+                if (this.state.email.length > 0) {
                     this.setState({stateInputName: true, stateInputSurname: true});
                 } else {
                     this.setState({stateInputName: false, stateInputSurname: false});
@@ -86,9 +119,9 @@ export class UsersView extends React.Component {
             })
     }
     getBySurname = (eventInput) => {
-        this.setState({name: eventInput.target.value},
+        this.setState({surname: eventInput.target.value},
             () => {
-                if (this.state.name.length > 0) {
+                if (this.state.surname.length > 0) {
                     this.setState({stateInputEmail: true, stateInputName: true});
                 } else {
                     this.setState({stateInputEmail: false, stateInputName: false});
