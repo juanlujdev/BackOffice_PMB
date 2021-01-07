@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01fbf3ee-253d-449d-8117-485ac94d0419" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pmb-backoffice/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pmb-backoffice/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pmb-backoffice/src/EventsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/src/EventsView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,19 +28,6 @@
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/pmb-backoffice/package.json" />
       <command value="run" />
