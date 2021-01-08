@@ -10,12 +10,15 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
+import axios from "axios";
+
 
 export class EventsView extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            userInfoData: [],
             stateInputLocal: false,
             stateInputVisitante: false,
             stateInputFecha: false,
@@ -32,11 +35,11 @@ export class EventsView extends React.Component {
                     <InputText onChange={this.getByLocal} disabled={this.state.stateInputLocal} placeholder="Local"/>
                     <InputText onChange={this.getByVisitante} disabled={this.state.stateInputVisitante}
                                placeholder="Visitante"/>
-                    <InputText onChange={this.getByDate} disabled={this.state.stateInputFecha} placeholder="Fecha"/>
-                    <Button label="Buscar" icon="pi pi-check"/>
+                    <InputText onChange={this.getByDate} disabled={this.state.stateInputFecha} placeholder="____-__-__  __:__"/>
+                    <Button onClick={this.viewFilterEvents} label="Buscar" icon="pi pi-check"/>
                 </div>
                 <div>
-                    <DataTable>
+                    <DataTable value={this.state.userInfoData}>
                         <Column field="EventoId" header="EventoId"></Column>
                         <Column field="EquipoLocal" header="E.Local"></Column>
                         <Column field="EquipoVisitante" header="E.Visitante"></Column>
@@ -80,5 +83,25 @@ export class EventsView extends React.Component {
                 }
             }
         )
+    }
+    viewFilterEvents = () => {
+        if (this.state.local != '') {
+            axios.get('https://localhost:44301/api/eventos?local=' + this.state.local).then((resultRequest) => {
+                this.setState({userInfoData: resultRequest.data});
+            })
+        }
+        if (this.state.visitante != ''){
+            axios.get('https://localhost:44301/api/eventos?visitante='+this.state.visitante).then((resultRequest)=> {
+                this.setState({userInfoData: resultRequest.data});
+            })
+        }
+        if (this.state.fecha !=''){
+            axios.get('https://localhost:44301/api/eventos?fecha='+this.state.fecha).then((resultRequest)=>{
+                this.setState({userInfoData: resultRequest.data});
+            })
+                .catch(function (error){
+                    alert("Error"+error.message.toString())
+                })
+        }
     }
 }
