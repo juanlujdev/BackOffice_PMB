@@ -6,6 +6,7 @@ import {InputText} from "primereact/inputtext";
 import {Button} from "primereact/button";
 import {DataTable} from "primereact/datatable";
 import {Column} from "primereact/column";
+import {InputSwitch} from 'primereact/inputswitch';
 
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
@@ -29,22 +30,24 @@ export class UsersView extends React.Component {
             hide: true,
             deleteEmail: '',
             hide2: true,
-            items: [
-                {
-                    label: 'Eliminar usuario',
-                    icon: 'pi pi-trash',
-                    command: (e) => {
-                        this.setState({hide: !this.state.hide, hide2: true})
-                    }
-                },
-                {
-                    label: 'Restablecer clave',
-                    icon: 'pi pi-user-edit',
-                    command: (e) => {
-                        this.setState({hide2: !this.state.hide2, hide: true})
-                    }
-                }
-            ]
+            checked1: false,
+            checked2: false,
+            // items: [
+            //     {
+            //         label: 'Eliminar usuario',
+            //         icon: 'pi pi-trash',
+            //         command: (e) => {
+            //             this.setState({hide: !this.state.hide, hide2: true})
+            //         }
+            //     },
+            //     {
+            //         label: 'Restablecer clave',
+            //         icon: 'pi pi-user-edit',
+            //         command: (e) => {
+            //             this.setState({hide2: !this.state.hide2, hide: true})
+            //         }
+            //     }
+            // ]
         }
         this.getInfoUser();
     }
@@ -60,12 +63,20 @@ export class UsersView extends React.Component {
                                placeholder="Apellidos"/>
                     <InputText onChange={this.getByEmail} disabled={this.state.stateInputEmail} placeholder="Email"/>
                     <Button onClick={this.viewFilterUser} label="Buscar" icon="pi pi-check"/>
-                    <SplitButton style={{width: '15%'}} label="Filtrar" model={this.state.items} icon="pi pi-filter"/>
+                    {/*<SplitButton style={{width: '15%'}} label="Filtrar" model={this.state.items} icon="pi pi-filter"/>*/}
                 </div>
+                <div>
+                    <h5>Eliminar</h5>
+                    <InputSwitch checked={this.state.checked1} onChange={this.showDelete}/>
+                </div>
+                <div>
+                    <h5>Restablecer clave</h5>
+                    <InputSwitch checked={this.state.checked2} onChange={this.showChange}/>
+                </div>
+
                 {/*con el value= guardo en el value lo que tiene en el input, y con el metodo getBynameDelete
                 lo que hago es que deleteEmail sea igual al value para poder trabajarlo*/}
                 <div hidden={this.state.hide}>
-                    <h5>Eliminar usuario</h5>
                     <InputText onChange={this.getByEmailDelete} value={this.state.deleteEmail} placeholder="Email"/>
                     <Button onClick={this.deleteUser} label="Eliminar"/>
                 </div>
@@ -161,5 +172,41 @@ export class UsersView extends React.Component {
                 });
         })
 
+    }
+    //Revisar condigo porque no cambia los estados de los botones cuando los cambio
+    showDelete = () => {
+        this.setState({checked1: !this.state.checked1},
+            () => {
+                if (this.state.checked1 === true) {
+                    this.setState({hide: false, hide2: true})
+                    if (this.state.checked2 === true) {
+                        this.setState({checked2: false})
+                    }
+                }
+                //si no lo pongo no mq quita la visualizacion de eliminar cuando lo descklico
+                if (this.state.checked1===false){
+                    this.setState({hide:true})
+                }
+                if (this.state.checked2===true) {
+                    this.setState({hide: true, hide2: false});
+                    if (this.state.checked1 === true) {
+                        this.setState({checked1: false});
+                    }
+                if (this.state.checked2===false){
+                    this.setState({hide2:true});
+                }
+                }
+
+            })
+    }
+    showChange = () => {
+        this.setState({checked2: !this.state.checked2},
+            () => {
+                if (this.state.checked2 === true) {
+                    this.setState({hide2: false, hide: true})
+                } else {
+                    this.setState({hide2: true, hide: true})
+                }
+            })
     }
 }
