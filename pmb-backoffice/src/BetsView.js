@@ -26,7 +26,7 @@ export class BetsView extends React.Component {
             mercado: '',
             evento: '',
             checked: false,
-            hide:true
+            hide: true
         }
 
     }
@@ -48,7 +48,6 @@ export class BetsView extends React.Component {
                 <div hidden={this.state.hide}>
                     <InputText placeholder={"bloquear Id mercado"}/>
                     <Button label={"Bloquear"}/>
-
 
 
                 </div>
@@ -121,14 +120,13 @@ export class BetsView extends React.Component {
         }
     }
     showBlock = () => {
-this.setState({checked:!this.state.checked},
-    ()=>{
-    if (this.state.checked===true){
-        this.setState({hide:false});
-    }
-    else{
-        this.setState({hide:true});
-    }
-    })
+        this.setState({checked: !this.state.checked},
+            () => {
+                if (this.state.checked === true) {
+                    this.setState({hide: false});
+                } else {
+                    this.setState({hide: true});
+                }
+            })
     }
 }
