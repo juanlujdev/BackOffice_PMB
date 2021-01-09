@@ -44,6 +44,9 @@ yarn add react-router-dom
 npm install primereact --save
 
 npm install primeicons --save
+##Personal decisions
+
+I´ve decided activate market when we create a new event.
 
 ## Learn More
 
