@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01fbf3ee-253d-449d-8117-485ac94d0419" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pmb-backoffice/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pmb-backoffice/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pmb-backoffice/src/EventsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/src/EventsView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
