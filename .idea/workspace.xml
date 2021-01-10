@@ -3,10 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="01fbf3ee-253d-449d-8117-485ac94d0419" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.yarn-integrity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/classnames/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/classnames/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/classnames/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/classnames/bind.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/classnames/dedupe.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/classnames/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/classnames/package.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pmb-backoffice/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pmb-backoffice/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pmb-backoffice/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pmb-backoffice/src/ReportView.js" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/src/ReportView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pmb-backoffice/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,5 +82,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
