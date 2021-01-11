@@ -1,24 +1,31 @@
 import * as React from "react";
-import {Chart} from 'primereact/chart';
 import {Fragment} from "react";
 
+import {Chart} from 'primereact/chart';
+
+import axios from "axios";
+
+
 export class ReportView extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            labelDay: [],
+            userDay: [],
+        }
+    }
 
     render() {
         const
             basicData = {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: this.state.labelDay,
                 datasets: [
                     {
-                        label: 'My First dataset',
+                        label: 'Altas por dia',
                         backgroundColor: '#42A5F5',
-                        data: [65, 59, 80, 81, 56, 55, 40]
-                    },
-                    {
-                        label: 'My Second dataset',
-                        backgroundColor: '#FFA726',
-                        data: [28, 48, 40, 19, 86, 27, 90]
+                        data: this.state.userDay
                     }
+
                 ]
             };
         let basicOptions = {
@@ -44,14 +51,26 @@ export class ReportView extends React.Component {
             <Fragment>
                 <div className="card">
                     <h5>Vertical</h5>
-                    <Chart type="bar" data={basicData} options={basicOptions}/>
-                </div>
-
-                <div className="card">
-                    <h5>Horizontal</h5>
-                    <Chart type="horizontalBar" data={basicData} options={basicOptions}/>
+                    <Chart type="line" data={basicData} options={basicOptions}/>
                 </div>
             </Fragment>
         );
+    }
+
+    componentDidMount() {
+        this.days();
+        this.newUsers();
+    }
+
+    days = () => {
+        axios.get('https://localhost:44301/Api/usuarios?dateId=3').then((resultRequest) => {
+            this.setState({labelDay: resultRequest.data});
+        })
+    }
+
+    newUsers = () => {
+        axios.get('https://localhost:44301/Api/usuarios?users=3').then((resultRequest) => {
+            this.setState({userDay: resultRequest.data});
+        })
     }
 }
