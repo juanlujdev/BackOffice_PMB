@@ -3,18 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="01fbf3ee-253d-449d-8117-485ac94d0419" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.yarn-integrity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/classnames/HISTORY.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/classnames/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/classnames/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/classnames/bind.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/classnames/dedupe.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/classnames/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/classnames/package.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pmb-backoffice/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pmb-backoffice/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pmb-backoffice/src/ReportView.js" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/src/ReportView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pmb-backoffice/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pmb-backoffice/package-lock.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,15 +27,13 @@
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -77,6 +65,7 @@
       <workItem from="1609857708736" duration="5510000" />
       <workItem from="1610300204163" duration="1014000" />
       <workItem from="1610301250081" duration="60000" />
+      <workItem from="1610383778135" duration="1990000" />
     </task>
     <servers />
   </component>
@@ -93,5 +82,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
