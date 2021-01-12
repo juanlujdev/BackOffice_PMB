@@ -65,7 +65,6 @@ export class EventsView extends React.Component {
                 }
             ]
         }
-        this.getInfoEvent();
     }
 
     render() {
@@ -113,6 +112,9 @@ export class EventsView extends React.Component {
 
         );
     }
+componentDidMount() {
+    this.getInfoEvent();
+}
 
     getInfoEvent = () => {
         axios.get('https://localhost:44301/api/eventos').then((resultRequest) => {
@@ -125,9 +127,10 @@ export class EventsView extends React.Component {
         this.setState({local: localInput.target.value},
             () => {
                 if (this.state.local.length > 0) {
-                    this.setState({stateInputVisitante: true, stateInputFecha: true})
+                    this.setState({stateInputVisitante: true, stateInputFecha: true});
                 } else {
-                    this.setState({stateInputVisitante: false, stateInputFecha: false})
+                    this.setState({stateInputVisitante: false, stateInputFecha: false,});
+                    this.getInfoEvent();
                 }
             }
         );
@@ -139,6 +142,7 @@ export class EventsView extends React.Component {
                     this.setState({stateInputLocal: true, stateInputFecha: true})
                 } else {
                     this.setState({stateInputLocal: false, stateInputFecha: false})
+                    this.getInfoEvent();
                 }
             }
         );
@@ -150,6 +154,7 @@ export class EventsView extends React.Component {
                     this.setState({stateInputLocal: true, stateInputVisitante: true});
                 } else {
                     this.setState({stateInputLocal: false, stateInputVisitante: false});
+                    this.getInfoEvent();
                 }
             }
         )
