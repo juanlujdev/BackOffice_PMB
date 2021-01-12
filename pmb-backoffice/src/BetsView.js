@@ -5,7 +5,7 @@ import {InputText} from "primereact/inputtext";
 import {Button} from "primereact/button";
 import {DataTable} from "primereact/datatable";
 import {Column} from "primereact/column";
-import {InputSwitch} from 'primereact/inputswitch';
+import {SplitButton} from "primereact/splitbutton";
 
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
@@ -19,39 +19,59 @@ export class BetsView extends React.Component {
         super(props);
         this.state = {
             userInfoData: [],
+            marketInfoData: [],
             stateInputEmail: false,
             stateInputMercado: false,
             stateInputEvento: false,
             email: '',
             mercado: '',
             evento: '',
+            hideTable: false,
+            hideTableMarket: true,
             checked: false,
-            hide: true
+            hide: true,
+            items: [
+                {
+                    label: 'Bloquear mercado',
+                    icon: 'pi pi-lock',
+                    command: (e) => {
+                        this.setState({
+                            hide: !this.state.hide,
+                            hideTable: !this.state.hideTable,
+                            hideTableMarket: !this.state.hideTableMarket
+                        });
+                    }
+                }
+            ]
         }
-
     }
 
     render() {
         return (
             <Fragment>
                 <div className={'fiter'}>
-                    <InputText onChange={this.getByEmail} disabled={this.state.stateInputEmail} placeholder="Email"/>
-                    <InputText onChange={this.getByMercado} disabled={this.state.stateInputMercado}
+                    <InputText style={{width: '20%'}} onChange={this.getByEmail} disabled={this.state.stateInputEmail}
+                               placeholder="Email"/>
+                    <InputText style={{width: '20%'}} onChange={this.getByMercado}
+                               disabled={this.state.stateInputMercado}
                                placeholder="Mercado"/>
-                    <InputText onChange={this.getByEvento} disabled={this.state.stateInputEvento} placeholder="Evento"/>
-                    <Button onClick={this.viewFilterBets} label="Buscar" icon="pi pi-check"/>
-                </div>
-                <div>
-                    <h5>Bloquear mercados</h5>
-                    <InputSwitch checked={this.state.checked} onChange={this.showBlock}/>
+                    <InputText style={{width: '20%'}} onChange={this.getByEvento} disabled={this.state.stateInputEvento}
+                               placeholder="Evento"/>
+                    <Button style={{width: '20%'}} onClick={this.viewFilterBets} label="Buscar" icon="pi pi-check"/>
+                    <SplitButton style={{width: '20%'}} label="Filtrar" model={this.state.items} icon="pi pi-filter"/>
                 </div>
                 <div hidden={this.state.hide}>
                     <InputText placeholder={"bloquear Id mercado"}/>
                     <Button label={"Bloquear"}/>
 
-
                 </div>
-                <div>
+                <div hidden={this.state.hideTableMarket}>
+                    <DataTable value={this.state.marketInfoData}>
+                        <Column field="MercadoId" header="MercadoId"></Column>
+                        <Column field="Bloqueado" header="Bloqueado"></Column>
+                    </DataTable>
+                </div>
+                <div hidden={this.state.hideTable}>
                     <DataTable value={this.state.userInfoData}>
                         <Column style={{width: '6%'}} field="ApuestaId" header="Apuesta"></Column>
                         <Column style={{width: '7%'}} field="MercadoOverUnder" header="Mercado"></Column>
@@ -66,6 +86,11 @@ export class BetsView extends React.Component {
             </Fragment>
 
         );
+    }
+
+    componentDidMount() {
+        this.bets();
+        this.markets();
     }
 
     getByEmail = (emailInput) => {
@@ -102,13 +127,12 @@ export class BetsView extends React.Component {
         )
     }
     viewFilterBets = () => {
-        if (this.state.email != '') {
+        if (this.state.email !== '') {
             axios.get('https://localhost:44301/api/apuestas?email=' + this.state.email).then((resultRequest) => {
                 this.setState({userInfoData: resultRequest.data});
-                console.log('estoy en email');
             })
         }
-        if (this.state.evento != '') {
+        if (this.state.evento !== '') {
             axios.get('https://localhost:44301/api/apuestas?evento=' + this.state.evento).then((resultRequest) => {
                 this.setState({userInfoData: resultRequest.data});
             })
@@ -119,14 +143,24 @@ export class BetsView extends React.Component {
             })
         }
     }
-    showBlock = () => {
-        this.setState({checked: !this.state.checked},
-            () => {
-                if (this.state.checked === true) {
-                    this.setState({hide: false});
+
+    bets = () => {
+        axios.get('https://localhost:44301/api/apuestas').then((resultRequest) => {
+            this.setState({userInfoData: resultRequest.data})
+        })
+    };
+
+    markets = () => {
+        axios.get('https://localhost:44301/api/mercados').then((resultRequest) => {
+            resultRequest.data.map((item) => {
+                if (item.Bloqueado === true) {
+                    item.Bloqueado = 'si';
                 } else {
-                    this.setState({hide: true});
+                    item.Bloqueado = 'no';
                 }
             })
-    }
+            this.setState({marketInfoData: resultRequest.data});
+            console.log(resultRequest.data);
+        })
+    };
 }
