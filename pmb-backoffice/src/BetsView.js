@@ -30,6 +30,7 @@ export class BetsView extends React.Component {
             hideTableMarket: true,
             checked: false,
             hide: true,
+            saveInputId:'',
             items: [
                 {
                     label: 'Bloquear mercado',
@@ -61,8 +62,8 @@ export class BetsView extends React.Component {
                     <SplitButton style={{width: '20%'}} label="Filtrar" model={this.state.items} icon="pi pi-filter"/>
                 </div>
                 <div hidden={this.state.hide}>
-                    <InputText placeholder={"bloquear Id mercado"}/>
-                    <Button label={"Bloquear"}/>
+                    <InputText onChange={this.saveInput} value={this.state.saveInputId} placeholder={"bloquear Id mercado"}/>
+                    <Button label={"Bloquear"} onClick={this.blockMarket}/>
 
                 </div>
                 <div hidden={this.state.hideTableMarket}>
@@ -119,12 +120,15 @@ export class BetsView extends React.Component {
         this.setState({evento: eventoInput.target.value},
             () => {
                 if (this.state.evento.length > 0) {
-                    this.setState({stateInputEmail: true, stateInputMercado: true})
+                    this.setState({stateInputEmail: true, stateInputMercado: true});
                 } else {
-                    this.setState({stateInputEmail: false, stateInputMercado: false})
+                    this.setState({stateInputEmail: false, stateInputMercado: false});
                 }
             }
         )
+    }
+    saveInput = (eventInput)=>{
+        this.setState({saveInputId: eventInput.target.value});
     }
     viewFilterBets = () => {
         if (this.state.email !== '') {
@@ -146,7 +150,7 @@ export class BetsView extends React.Component {
 
     bets = () => {
         axios.get('https://localhost:44301/api/apuestas').then((resultRequest) => {
-            this.setState({userInfoData: resultRequest.data})
+            this.setState({userInfoData: resultRequest.data});
         })
     };
 
@@ -162,5 +166,12 @@ export class BetsView extends React.Component {
             this.setState({marketInfoData: resultRequest.data});
             console.log(resultRequest.data);
         })
+    };
+    blockMarket = () => {
+
+axios.put('https://localhost:44301/api/mercados?id='+this.state.saveInputId).then((resultRequest)=>{
+    this.setState({hideTableMarket:resultRequest.data, saveInputId:''});
+    this.markets();
+})
     };
 }
