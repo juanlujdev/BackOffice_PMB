@@ -6,14 +6,12 @@ import {InputText} from "primereact/inputtext";
 import {Button} from "primereact/button";
 import {DataTable} from "primereact/datatable";
 import {Column} from "primereact/column";
-// import {InputSwitch} from 'primereact/inputswitch';
 
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
 import axios from "axios";
-
 
 export class UsersView extends React.Component {
 
@@ -65,14 +63,7 @@ export class UsersView extends React.Component {
                     <Button onClick={this.viewFilterUser} label="Buscar" icon="pi pi-check"/>
                     <SplitButton style={{width: '15%'}} label="Filtrar" model={this.state.items} icon="pi pi-filter"/>
                 </div>
-                {/*<div>*/}
-                {/*    <h5>Eliminar</h5>*/}
-                {/*    <InputSwitch checked={this.state.checked1} onChange={this.showDelete}/>*/}
-                {/*</div>*/}
-                {/*<div>*/}
-                {/*    <h5>Restablecer clave</h5>*/}
-                {/*    <InputSwitch checked={this.state.checked2} onChange={this.showChange}/>*/}
-                {/*</div>*/}
+
 
                 {/*con el value= guardo en el value lo que tiene en el input, y con el metodo getBynameDelete
                 lo que hago es que deleteEmail sea igual al value para poder trabajarlo*/}
@@ -99,8 +90,6 @@ export class UsersView extends React.Component {
         );
     }
 
-    /*metodo que traigo con axios los datos de la api de usuarios, me lo guarda en resultRequest
-     y me actualizas con el setState en userInfoData que sea igual a resultRequest*/
     getInfoUser = () => {
         axios.get('https://localhost:44301/api/usuarios').then((resultRequest) => {
             this.setState({userInfoData: resultRequest.data});
@@ -136,7 +125,6 @@ export class UsersView extends React.Component {
                     this.getInfoUser();
                 }
             })
-
     }
     getByEmail = (eventInput) => {
         this.setState({email: eventInput.target.value},
@@ -184,17 +172,17 @@ export class UsersView extends React.Component {
                     }
                 }
                 //si no lo pongo no mq quita la visualizacion de eliminar cuando lo descklico
-                if (this.state.checked1===false){
-                    this.setState({hide:true})
+                if (this.state.checked1 === false) {
+                    this.setState({hide: true})
                 }
-                if (this.state.checked2===true) {
+                if (this.state.checked2 === true) {
                     this.setState({hide: true, hide2: false});
                     if (this.state.checked1 === true) {
                         this.setState({checked1: false});
                     }
-                if (this.state.checked2===false){
-                    this.setState({hide2:true});
-                }
+                    if (this.state.checked2 === false) {
+                        this.setState({hide2: true});
+                    }
                 }
 
             })
