@@ -13,6 +13,8 @@ export class ReportView extends React.Component {
         this.state = {
             labelDay: [],
             userDay: [],
+            labelDay2:[],
+            userDay2:[],
             hide: false,
             hide2: true,
             checked: true,
@@ -54,12 +56,12 @@ export class ReportView extends React.Component {
         }
         const
             basicData2 = {
-                labels: this.state.labelDay,
+                labels: this.state.labelDay2,
                 datasets: [
                     {
                         label: 'Apuestas por dia',
                         backgroundColor: '#FFA726',
-                        data: this.state.userDay
+                        data: this.state.userDay2
                     }
 
                 ]
@@ -102,14 +104,11 @@ export class ReportView extends React.Component {
     }
 
     componentDidMount() {
-        if (this.state.checked === true) {
-            this.daysUsers();
-            this.newUsers();
-        }
-        else {
+
             this.daysBets();
             this.newBets();
-        }
+            this.daysUsers();
+            this.newUsers();
 
     }
 
@@ -133,13 +132,13 @@ export class ReportView extends React.Component {
 
     daysBets = () => {
         axios.get('https://localhost:44301/Api/apuestas?dateId=3').then((resultRequest) => {
-            this.setState({labelDay: resultRequest.data});
+            this.setState({labelDay2: resultRequest.data});
         })
     };
 
     newBets = () => {
-        axios.get('https://localhost:44301/Api/apuestas?dateId=3').then((resultRequest) => {
-            this.setState({labelDay: resultRequest.data});
+        axios.get('https://localhost:44301/Api/apuestas?bets=3').then((resultRequest) => {
+            this.setState({userDay2: resultRequest.data});
         })
     };
 }
