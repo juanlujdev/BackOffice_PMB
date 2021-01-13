@@ -33,6 +33,7 @@ export class UsersView extends React.Component {
             changeEmail: '',
             changeOldPsswrd: '',
             changeNewPsswrd: '',
+            changeNewPsswrd2: '',
             changeByNewPsswrd2: '',
             items: [
                 {
@@ -124,17 +125,14 @@ export class UsersView extends React.Component {
         }
     }
     changePasswrd = () => {
-        axios.post('https://localhost:44301/api/Account/ChangePasswordApi?email=' + this.state.changeEmail, {
-            OldPassword: this.state.changeOldPsswrd,
-            NewPassword: this.state.changeNewPsswrd,
-            ConfirmPassword: this.state.changeNewPsswrd2
-        }).then((resultRequest) => {
-            if (resultRequest.data != null) {
-                alert('pssword changed');
-            } else {
-                alert('no se ha podido cmbiar la contraseña');
+        axios.post('https://localhost:44301/api/Account/ChangePasswordApi?email=' + this.state.changeEmail,
+            {
+                OldPassword: this.state.changeOldPsswrd,
+                NewPassword: this.state.changeNewPsswrd,
+                ConfirmPassword: this.state.changeNewPsswrd2
             }
-        })
+        ).then();
+        alert("Password changed");
     }
     getByName = (eventInput) => {
         this.setState({name: eventInput.target.value},
@@ -182,7 +180,7 @@ export class UsersView extends React.Component {
         this.setState({changeNewPsswrd: eventInput.target.value});
     }
     changeByNewPsswrd2 = (eventInput) => {
-        this.setState({changeByNewPsswrd2: eventInput.target.value})
+        this.setState({changeNewPsswrd2: eventInput.target.value})
     }
     deleteUser = () => {
         axios.delete('https://localhost:44301/api/usuarios?usuarioId=' + this.state.deleteEmail).then((resultRequest) => {
