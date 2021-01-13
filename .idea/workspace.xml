@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/pmb-backoffice/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pmb-backoffice/src/BetsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/src/BetsView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pmb-backoffice/src/EventsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/src/EventsView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pmb-backoffice/package-lock.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,10 +66,25 @@
       <updated>1609857706100</updated>
       <workItem from="1609857708736" duration="5510000" />
       <workItem from="1609926418099" duration="650000" />
+      <workItem from="1610300204163" duration="1014000" />
+      <workItem from="1610301250081" duration="60000" />
+      <workItem from="1610383778135" duration="1990000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
