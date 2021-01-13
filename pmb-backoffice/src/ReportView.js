@@ -1,11 +1,14 @@
 import * as React from "react";
 import {Fragment} from "react";
 
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+
 import {Chart} from 'primereact/chart';
 import {RadioButton} from 'primereact/radiobutton'
 
 import axios from "axios";
-
 
 export class ReportView extends React.Component {
     constructor(props) {
@@ -13,8 +16,8 @@ export class ReportView extends React.Component {
         this.state = {
             labelDay: [],
             userDay: [],
-            labelDay2:[],
-            userDay2:[],
+            labelDay2: [],
+            userDay2: [],
             hide: false,
             hide2: true,
             checked: true,
@@ -32,7 +35,6 @@ export class ReportView extends React.Component {
                         backgroundColor: '#42A5F5',
                         data: this.state.userDay
                     }
-
                 ]
             };
         let basicOptions = {
@@ -105,10 +107,10 @@ export class ReportView extends React.Component {
 
     componentDidMount() {
 
-            this.daysBets();
-            this.newBets();
-            this.daysUsers();
-            this.newUsers();
+        this.daysBets();
+        this.newBets();
+        this.daysUsers();
+        this.newUsers();
 
     }
 
