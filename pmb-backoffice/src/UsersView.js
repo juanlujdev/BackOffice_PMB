@@ -67,19 +67,19 @@ export class UsersView extends React.Component {
                     <Button onClick={this.viewFilterUser} label="Buscar" icon="pi pi-check"/>
                     <SplitButton style={{width: '15%'}} label="Filtrar" model={this.state.items} icon="pi pi-filter"/>
                 </div>
-                <div hidden={this.state.hide}>
+                <div style={{paddingTop:10}} hidden={this.state.hide}>
                     <InputText onChange={this.getByEmailDelete} value={this.state.deleteEmail} placeholder="Email"/>
-                    <Button onClick={this.deleteUser} label="Eliminar"/>
+                    <Button style={{backgroundColor: "#f06e4e"}} onClick={this.deleteUser} label="Eliminar"/>
                 </div>
-                <div hidden={this.state.hide2}>
-                    <InputText value={this.state.changeEmail} onChange={this.changeById} placeholder="Email"/>
-                    <InputText value={this.state.changeOldPsswrd} onChange={this.changeByOldPsswrd}
+                <div style={{paddingTop:10}} hidden={this.state.hide2}>
+                    <InputText style={{width: '20%'}} value={this.state.changeEmail} onChange={this.changeById} placeholder="Email"/>
+                    <InputText style={{width: '20%'}} value={this.state.changeOldPsswrd} onChange={this.changeByOldPsswrd}
                                placeholder="Password antiguo"/>
-                    <InputText value={this.state.changeNewPsswrd} onChange={this.changeByNewPsswrd}
+                    <InputText style={{width: '20%'}} value={this.state.changeNewPsswrd} onChange={this.changeByNewPsswrd}
                                placeholder="Nuevo password"/>
-                    <InputText value={this.state.changeNewPsswrd2} onChange={this.changeByNewPsswrd2}
+                    <InputText  style={{width: '20%'}} value={this.state.changeNewPsswrd2} onChange={this.changeByNewPsswrd2}
                                placeholder="Confirmar password"/>
-                    <Button onClick={this.changePasswrd} label="Cambiar"/>
+                    <Button style={{width: '15%'}} style={{backgroundColor: "#dcd367"}} onClick={this.changePasswrd} label="Cambiar"/>
                 </div>
                 <div>
                     <DataTable value={this.state.userInfoData}>
