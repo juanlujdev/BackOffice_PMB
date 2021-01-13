@@ -1,15 +1,18 @@
-import './App.css';
+import {Switch, Route} from "react-router-dom";
 import * as React from "react";
 import {Fragment} from "react";
+
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+
 import { TabMenu } from 'primereact/tabmenu';
-import {Switch, Route} from "react-router-dom";
+
 import {UsersView} from "./UsersView";
 import {BetsView} from "./BetsView";
 import {EventsView} from "./EventsView";
 import {ReportView} from "./ReportView";
+import './App.css';
 
 const TabMenuDemo = () => {
 

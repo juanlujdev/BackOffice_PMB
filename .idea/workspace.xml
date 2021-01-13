@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01fbf3ee-253d-449d-8117-485ac94d0419" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pmb-backoffice/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pmb-backoffice/src/BetsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/pmb-backoffice/src/BetsView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,15 +27,13 @@
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -63,6 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1609857706100</updated>
       <workItem from="1609857708736" duration="5510000" />
+      <workItem from="1609926418099" duration="650000" />
     </task>
     <servers />
   </component>
