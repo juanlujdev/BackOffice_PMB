@@ -30,19 +30,23 @@ export class UsersView extends React.Component {
             hide2: true,
             checked1: false,
             checked2: false,
+            changeEmail: '',
+            changeOldPsswrd: '',
+            changeNewPsswrd: '',
+            changeByNewPsswrd2: '',
             items: [
                 {
                     label: 'Eliminar usuario',
                     icon: 'pi pi-trash',
                     command: (e) => {
-                        this.setState({hide: !this.state.hide, hide2: true})
+                        this.setState({hide: !this.state.hide, hide2: true});
                     }
                 },
                 {
                     label: 'Restablecer clave',
                     icon: 'pi pi-user-edit',
                     command: (e) => {
-                        this.setState({hide2: !this.state.hide2, hide: true})
+                        this.setState({hide2: !this.state.hide2, hide: true});
                     }
                 }
             ]
@@ -72,10 +76,14 @@ export class UsersView extends React.Component {
                     <Button onClick={this.deleteUser} label="Eliminar"/>
                 </div>
                 <div hidden={this.state.hide2}>
-                    <h5>Restablecer clave</h5>
-                    <InputText placeholder="Email"/>
-                    <InputText placeholder="Nueva clave"/>
-                    <Button label="Eliminar"/>
+                    <InputText value={this.state.changeEmail} onChange={this.changeById} placeholder="Email"/>
+                    <InputText value={this.state.changeOldPsswrd} onChange={this.changeByOldPsswrd}
+                               placeholder="Password antiguo"/>
+                    <InputText value={this.state.changeNewPsswrd} onChange={this.changeByNewPsswrd}
+                               placeholder="Nuevo password"/>
+                    <InputText value={this.state.changeNewPsswrd2} onChange={this.changeByNewPsswrd2}
+                               placeholder="Confirmar password"/>
+                    <Button onClick={this.changePasswrd} label="Cambiar"/>
                 </div>
                 <div>
                     <DataTable value={this.state.userInfoData}>
@@ -115,6 +123,19 @@ export class UsersView extends React.Component {
             })
         }
     }
+    changePasswrd = () => {
+        axios.post('https://localhost:44301/api/Account/ChangePasswordApi?email=' + this.state.changeEmail, {
+            OldPassword: this.state.changeOldPsswrd,
+            NewPassword: this.state.changeNewPsswrd,
+            ConfirmPassword: this.state.changeNewPsswrd2
+        }).then((resultRequest) => {
+            if (resultRequest.data != null) {
+                alert('pssword changed');
+            } else {
+                alert('no se ha podido cmbiar la contraseña');
+            }
+        })
+    }
     getByName = (eventInput) => {
         this.setState({name: eventInput.target.value},
             () => {
@@ -149,7 +170,19 @@ export class UsersView extends React.Component {
             })
     }
     getByEmailDelete = (eventInput) => {
-        this.setState({deleteEmail: eventInput.target.value})
+        this.setState({deleteEmail: eventInput.target.value});
+    }
+    changeById = (eventInput) => {
+        this.setState({changeEmail: eventInput.target.value});
+    }
+    changeByOldPsswrd = (eventInput) => {
+        this.setState({changeOldPsswrd: eventInput.target.value});
+    }
+    changeByNewPsswrd = (eventInput) => {
+        this.setState({changeNewPsswrd: eventInput.target.value});
+    }
+    changeByNewPsswrd2 = (eventInput) => {
+        this.setState({changeByNewPsswrd2: eventInput.target.value})
     }
     deleteUser = () => {
         axios.delete('https://localhost:44301/api/usuarios?usuarioId=' + this.state.deleteEmail).then((resultRequest) => {
