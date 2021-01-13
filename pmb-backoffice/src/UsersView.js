@@ -52,7 +52,6 @@ export class UsersView extends React.Component {
                 }
             ]
         }
-        this.getInfoUser();
     }
 
     render() {
@@ -68,10 +67,6 @@ export class UsersView extends React.Component {
                     <Button onClick={this.viewFilterUser} label="Buscar" icon="pi pi-check"/>
                     <SplitButton style={{width: '15%'}} label="Filtrar" model={this.state.items} icon="pi pi-filter"/>
                 </div>
-
-
-                {/*con el value= guardo en el value lo que tiene en el input, y con el metodo getBynameDelete
-                lo que hago es que deleteEmail sea igual al value para poder trabajarlo*/}
                 <div hidden={this.state.hide}>
                     <InputText onChange={this.getByEmailDelete} value={this.state.deleteEmail} placeholder="Email"/>
                     <Button onClick={this.deleteUser} label="Eliminar"/>
@@ -95,33 +90,55 @@ export class UsersView extends React.Component {
                     </DataTable>
                 </div>
             </Fragment>
-
         );
+    }
+
+    componentDidMount() {
+        this.getInfoUser();
     }
 
     getInfoUser = () => {
         axios.get('https://localhost:44301/api/usuarios').then((resultRequest) => {
             this.setState({userInfoData: resultRequest.data});
-            console.log(this.state.userInfoData);
         })
     }
     viewFilterUser = () => {
-        if (this.state.name != '') {
+        if (this.state.name !== '') {
             axios.get('https://localhost:44301/api/usuarios?name=' + this.state.name).then((resultRequest) => {
-                this.setState({userInfoData: resultRequest.data})
-            })
+                if (resultRequest.data.length > 0) {
+                    this.setState({userInfoData: resultRequest.data});
+                } else {
+                    alert("Usuario no encontrado");
+                }
+
+            }).catch(function (error) {
+                alert("Error" + error.message.toString());
+            });
         }
-        if (this.state.surname != '') {
+        if (this.state.surname !== '') {
             axios.get('https://localhost:44301/api/usuarios?surname=' + this.state.surname).then((resultRequest) => {
-                this.setState({userInfoData: resultRequest.data})
-            })
+                if (resultRequest.data.length > 0) {
+                    this.setState({userInfoData: resultRequest.data});
+                } else {
+                    alert("Apellido no encontrado");
+                }
+
+            }).catch(function (error) {
+                alert("Error" + error.message.toString());
+            });
         }
-        if (this.state.email != '') {
+        if (this.state.email !== '') {
             console.log('El mail es: ' + this.state.email)
             axios.get('https://localhost:44301/api/usuarios?email=' + this.state.email).then((resultRequest) => {
-                this.setState({userInfoData: resultRequest.data})
-                console.log(this.state.userInfoData);
-            })
+                if (resultRequest.data.length > 0) {
+                    this.setState({userInfoData: resultRequest.data});
+                } else {
+                    alert("Email no encontrado");
+                }
+
+            }).catch(function (error) {
+                alert("Error" + error.message.toString());
+            });
         }
     }
     changePasswrd = () => {
@@ -133,6 +150,7 @@ export class UsersView extends React.Component {
             }
         ).then();
         alert("Password changed");
+        this.setState({changeEmail: '', changeOldPsswrd: '', changeNewPsswrd: '', changeNewPsswrd2: ''});
     }
     getByName = (eventInput) => {
         this.setState({name: eventInput.target.value},
@@ -184,13 +202,19 @@ export class UsersView extends React.Component {
     }
     deleteUser = () => {
         axios.delete('https://localhost:44301/api/usuarios?usuarioId=' + this.state.deleteEmail).then((resultRequest) => {
-            this.setState({deleteEmail: ''});
-            this.setState({userInfoData: resultRequest.data},
-                () => {
-                    this.getInfoUser();
-                });
-        })
-
+            if (resultRequest.data === 'fail') {
+                alert("Email no encontrado");
+            } else {
+                this.setState({deleteEmail: ''});
+                this.setState({userInfoData: resultRequest.data},
+                    () => {
+                        this.getInfoUser();
+                    });
+                alert("Email eliminado");
+            }
+        }).catch(function (error) {
+            alert("Error" + error.message.toString());
+        });
     }
     //Revisar condigo porque no cambia los estados de los botones cuando los cambio
     showDelete = () => {
