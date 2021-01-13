@@ -30,7 +30,7 @@ export class BetsView extends React.Component {
             hideTableMarket: true,
             checked: false,
             hide: true,
-            saveInputId:'',
+            saveInputId: '',
             items: [
                 {
                     label: 'Bloquear mercado',
@@ -53,18 +53,19 @@ export class BetsView extends React.Component {
                 <div className={'fiter'}>
                     <InputText style={{width: '20%'}} onChange={this.getByEmail} disabled={this.state.stateInputEmail}
                                placeholder="Email"/>
-                    <InputText style={{width: '20%'}} onChange={this.getByMercado}
+                    <InputText style={{width: '20%'}} type={"number"} onChange={this.getByMercado}
                                disabled={this.state.stateInputMercado}
                                placeholder="Mercado"/>
-                    <InputText style={{width: '20%'}} onChange={this.getByEvento} disabled={this.state.stateInputEvento}
+                    <InputText style={{width: '20%'}} type={"number"} onChange={this.getByEvento}
+                               disabled={this.state.stateInputEvento}
                                placeholder="Evento"/>
                     <Button style={{width: '20%'}} onClick={this.viewFilterBets} label="Buscar" icon="pi pi-check"/>
-                    <SplitButton style={{width: '20%'}} label="Filtrar" model={this.state.items} icon="pi pi-filter"/>
+                    <SplitButton style={{width: '18%'}} label="Filtrar" model={this.state.items} icon="pi pi-filter"/>
                 </div>
-                <div hidden={this.state.hide}>
-                    <InputText onChange={this.saveInput} value={this.state.saveInputId} placeholder={"bloquear Id mercado"}/>
+                <div style={{paddingTop:10}} hidden={this.state.hide}>
+                    <InputText onChange={this.saveInput} value={this.state.saveInputId} type={"number"}
+                               placeholder={"bloquear Id mercado"}/>
                     <Button label={"Bloquear"} onClick={this.blockMarket}/>
-
                 </div>
                 <div hidden={this.state.hideTableMarket}>
                     <DataTable value={this.state.marketInfoData}>
@@ -98,9 +99,10 @@ export class BetsView extends React.Component {
         this.setState({email: emailInput.target.value},
             () => {
                 if (this.state.email.length > 0) {
-                    this.setState({stateInputMercado: true, stateInputEvento: true})
+                    this.setState({stateInputMercado: true, stateInputEvento: true});
                 } else {
-                    this.setState({stateInputMercado: false, stateInputEvento: false})
+                    this.setState({stateInputMercado: false, stateInputEvento: false});
+                    this.bets();
                 }
             }
         )
@@ -112,6 +114,7 @@ export class BetsView extends React.Component {
                     this.setState({stateInputEmail: true, stateInputEvento: true})
                 } else {
                     this.setState({stateInputEmail: false, stateInputEvento: false})
+                    this.bets();
                 }
             }
         )
@@ -123,27 +126,40 @@ export class BetsView extends React.Component {
                     this.setState({stateInputEmail: true, stateInputMercado: true});
                 } else {
                     this.setState({stateInputEmail: false, stateInputMercado: false});
+                    this.bets();
                 }
             }
         )
     }
-    saveInput = (eventInput)=>{
+    saveInput = (eventInput) => {
         this.setState({saveInputId: eventInput.target.value});
     }
     viewFilterBets = () => {
         if (this.state.email !== '') {
             axios.get('https://localhost:44301/api/apuestas?email=' + this.state.email).then((resultRequest) => {
-                this.setState({userInfoData: resultRequest.data});
+                if (resultRequest.data.length > 0) {
+                    this.setState({userInfoData: resultRequest.data});
+                } else {
+                    alert("No hay coincidencias por Email");
+                }
             })
         }
         if (this.state.evento !== '') {
             axios.get('https://localhost:44301/api/apuestas?evento=' + this.state.evento).then((resultRequest) => {
-                this.setState({userInfoData: resultRequest.data});
+                if (resultRequest.data.length > 0) {
+                    this.setState({userInfoData: resultRequest.data});
+                } else {
+                    alert("No hay coincidencia por evento");
+                }
             })
         }
         if (this.state.mercado) {
             axios.get('https://localhost:44301/api/apuestas?mercado=' + this.state.mercado).then((resultRequest) => {
-                this.setState({userInfoData: resultRequest.data});
+                if (resultRequest.data.length > 0) {
+                    this.setState({userInfoData: resultRequest.data});
+                } else {
+                    alert("No hay coincidencia por mercado");
+                }
             })
         }
     }
@@ -164,14 +180,17 @@ export class BetsView extends React.Component {
                 }
             })
             this.setState({marketInfoData: resultRequest.data});
-            console.log(resultRequest.data);
         })
     };
     blockMarket = () => {
 
-axios.put('https://localhost:44301/api/mercados?id='+this.state.saveInputId).then((resultRequest)=>{
-    this.setState({hideTableMarket:resultRequest.data, saveInputId:''});
-    this.markets();
-})
+        axios.put('https://localhost:44301/api/mercados?id=' + this.state.saveInputId).then((resultRequest) => {
+            alert("El mercado con Id "+this.state.saveInputId+" esta bloqueado");
+            this.setState({hideTableMarket: resultRequest.data, saveInputId: ''});
+            this.markets();
+
+        }).catch(function (error){
+            alert("Error"+error.message.toString());
+        })
     };
 }
