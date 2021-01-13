@@ -19,13 +19,6 @@ export class EventsView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            evento: [
-                {
-                    "EquipoLocal": "Hercules",
-                    "EquipoVisitante": "Levante",
-                    "Fecha": "2020-11-29"
-                }
-            ],
             userInfoData: [],
             stateInputLocal: false,
             stateInputVisitante: false,
@@ -71,34 +64,36 @@ export class EventsView extends React.Component {
         return (
             <Fragment>
                 <div className={'fiter'}>
-                    <InputText style={{width: '20%'}} onChange={this.getByLocal} disabled={this.state.stateInputLocal}
+                    <InputText style={{width: '20%'}} value={this.state.local} onChange={this.getByLocal}
+                               disabled={this.state.stateInputLocal}
                                placeholder="Local"/>
-                    <InputText style={{width: '20%'}} onChange={this.getByVisitante}
+                    <InputText style={{width: '20%'}} value={this.state.visitante} onChange={this.getByVisitante}
                                disabled={this.state.stateInputVisitante}
                                placeholder="Visitante"/>
-                    <InputText style={{width: '25%'}} onChange={this.getByDate} disabled={this.state.stateInputFecha}
-                               placeholder="____-__-__  __:__"/>
+                    <InputText style={{width: '25%'}} value={this.state.fecha} onChange={this.getByDate}
+                               disabled={this.state.stateInputFecha}
+                               placeholder="aaaa-MM-dd  hh:mm"/>
                     <Button onClick={this.viewFilterEvents} label="Buscar" icon="pi pi-check"/>
                     <SplitButton style={{width: '15%'}} label="Filtrar" model={this.state.items} icon="pi pi-filter"/>
                 </div>
-                <div hidden={this.state.hide}>
+                <div style={{paddingTop: 10}} hidden={this.state.hide}>
                     <InputText onChange={this.getByIdDelete} value={this.state.deleteEvent} placeholder="Id evento"/>
-                    <Button onClick={this.deleteEvent} label="Eliminar"/>
+                    <Button style={{backgroundColor: "#f06e4e"}} onClick={this.deleteEvent} label="Eliminar"/>
                 </div>
-                <div hidden={this.state.hide2}>
+                <div style={{paddingTop: 10}} hidden={this.state.hide2}>
                     <InputText onChange={this.getByPut} value={this.state.putById} placeholder={"Id evento"}/>
                     <InputText onChange={this.getByDate2} value={this.state.putByDate}
-                               placeholder={"____-__-__  __:__"}/>
-                    <Button onClick={this.changeDateEvent} label="Modificar"/>
+                               placeholder={"aaaa-MM-dd  hh:mm"}/>
+                    <Button style={{backgroundColor: "#dcd367"}} onClick={this.changeDateEvent} label="Modificar"/>
                 </div>
-                <div hidden={this.state.hide3}>
+                <div style={{paddingTop: 10}} hidden={this.state.hide3}>
                     <InputText onChange={this.insertByLocal} value={this.state.postByLocal}
                                placeholder={"Equipo local"}/>
                     <InputText onChange={this.insertByVisitor} value={this.state.postByVisitor}
                                placeholder={"Equipo visitante"}/>
                     <InputText onChange={this.getByDate2} value={this.state.putByDate}
-                               placeholder={"____-__-__  __:__"}/>
-                    <Button onClick={this.InsertEvent} label="Dar de alta"/>
+                               placeholder={"aaaa-MM-dd  hh:mm"}/>
+                    <Button style={{backgroundColor: "#ccdcbb"}} onClick={this.InsertEvent} label="Dar de alta"/>
                 </div>
                 <div>
                     <DataTable value={this.state.userInfoData}>
@@ -112,9 +107,10 @@ export class EventsView extends React.Component {
 
         );
     }
-componentDidMount() {
-    this.getInfoEvent();
-}
+
+    componentDidMount() {
+        this.getInfoEvent();
+    }
 
     getInfoEvent = () => {
         axios.get('https://localhost:44301/api/eventos').then((resultRequest) => {
@@ -160,22 +156,43 @@ componentDidMount() {
         )
     }
     viewFilterEvents = () => {
-        if (this.state.local != '') {
+        if (this.state.local !== '') {
             axios.get('https://localhost:44301/api/eventos?local=' + this.state.local).then((resultRequest) => {
-                this.setState({userInfoData: resultRequest.data});
+                if (resultRequest.data.length > 0) {
+                    this.setState({userInfoData: resultRequest.data});
+                } else {
+                    alert("No hay eventos con " + this.state.local + " como equipo local");
+                    this.setState({local: ''});
+                }
+            }).catch(function (error) {
+                alert("Error" + error.message.toString());
             })
         }
-        if (this.state.visitante != '') {
+        if (this.state.visitante !== '') {
             axios.get('https://localhost:44301/api/eventos?visitante=' + this.state.visitante).then((resultRequest) => {
-                this.setState({userInfoData: resultRequest.data});
+                if (resultRequest.data.length > 0) {
+                    this.setState({userInfoData: resultRequest.data});
+                } else {
+                    alert("No hay eventos con " + this.state.visitante + " como equipo local");
+                    this.setState({visitante: ''});
+                }
+
+            }).catch(function (error) {
+                alert("Error" + error.message.toString());
             })
         }
-        if (this.state.fecha != '') {
+        if (this.state.fecha !== '') {
             axios.get('https://localhost:44301/api/eventos?fecha=' + this.state.fecha).then((resultRequest) => {
-                this.setState({userInfoData: resultRequest.data});
+                if (resultRequest.data.length > 0) {
+                    this.setState({userInfoData: resultRequest.data});
+                } else {
+                    alert("No hay fechas que coincidan");
+                    this.setState({fecha: ''});
+                }
+
             })
                 .catch(function (error) {
-                    alert("Error" + error.message.toString())
+                    alert("Error" + error.message.toString());
                 })
         }
     }
@@ -218,9 +235,9 @@ componentDidMount() {
             EquipoVisitante: this.state.postByVisitor,
             Fecha: this.state.putByDate
         }).then((resultReques) => {
-            this.setState({postByLocal:'',postByVisitor:'',putByDate:'',userInfoData: resultReques.data},
-                ()=>
-            this.getInfoEvent());
+            this.setState({postByLocal: '', postByVisitor: '', putByDate: '', userInfoData: resultReques.data},
+                () =>
+                    this.getInfoEvent());
         })
     }
 }
