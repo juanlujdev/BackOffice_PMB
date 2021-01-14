@@ -1,12 +1,9 @@
-import {Switch, Route} from "react-router-dom";
+import {NavLink, Route, Switch} from "react-router-dom";
 import * as React from "react";
-import {Fragment} from "react";
 
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-
-import { TabMenu } from 'primereact/tabmenu';
 
 import {UsersView} from "./UsersView";
 import {BetsView} from "./BetsView";
@@ -14,38 +11,30 @@ import {EventsView} from "./EventsView";
 import {ReportView} from "./ReportView";
 import './App.css';
 
-const TabMenuDemo = () => {
 
-    const items = [
-        {label: 'Usuarios',  icon: 'pi pi-user', command: () => {
-                window.location = '/users';}},
-        {label: 'Apuestas', icon: 'pi pi-money-bill', command: () => {
-                window.location = '/bets';
-            }},
-        {label: 'Eventos', icon: 'pi pi-ticket', command: () => {
-                window.location = '/events';
-            }},
-        {label: 'Informes', icon: 'pi pi-chart-line', command: () => {
-                window.location = '/reports';
-            }}
-    ];
-
-    return (
-        <div>
-            <div className="card">
-                <TabMenu model={items} />
-            </div>
-        </div>
-    );
-}
 export default class App extends React.Component {
 
     render() {
         return (
-            <div className="App">
-                <Fragment>
-                   <TabMenuDemo/>
-                    <div>
+            <fragment>
+                <div className="App">
+                    <div className={'menu'}>
+                        <ul>
+                            <li>
+                                <NavLink to={'/users'} activeClassName={'menu-active'}>Usuarios</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={'/bets'} activeClassName={'menu-active'}>Apuestas</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={'/events'} activeClassName={'menu-active'}>Eventos</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={'/reports'} activeClassName={'menu-active'}>Informes</NavLink>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className={'display'}>
                         <Switch>
                             <Route path={'/users'}>
                                 <UsersView/>
@@ -61,8 +50,9 @@ export default class App extends React.Component {
                             </Route>
                         </Switch>
                     </div>
-                </Fragment>
-            </div>
+                </div>
+            </fragment>
+
         );
     }
 }

@@ -1,19 +1,35 @@
-.App {
-    text-align: center;
-    background-color: beige;
-    height: 1024px;
-    width: 768px;
+.App{
+    display: flex;
+    width: 100%;
+    min-width: 800px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+.menu{
+    display: flex;
     flex-direction: column;
-    display: flex;
+    align-items: center;
+    min-width: 200px;
+    line-height: 1.5rem;
+    background-color: #D2CECD;
 }
-
-.display {
-    border: solid 1px darkgray;
+a{
+    text-decoration: none;
+}
+.menu-active{
+    background-color: #666261;
+    color: navy;
+}
+.menu li{
+    list-style: none;
+}
+.display{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     background-color: beige;
-    display: flex;
-    flex-direction: row;
 }
-
 .fiter {
     display: flex;
     background-color: blanchedalmond;

@@ -62,7 +62,7 @@ export class BetsView extends React.Component {
                     <Button style={{width: '20%'}} onClick={this.viewFilterBets} label="Buscar" icon="pi pi-check"/>
                     <SplitButton style={{width: '18%'}} label="Filtrar" model={this.state.items} icon="pi pi-filter"/>
                 </div>
-                <div style={{paddingTop:10}} hidden={this.state.hide}>
+                <div style={{paddingTop: 10}} hidden={this.state.hide}>
                     <InputText onChange={this.saveInput} value={this.state.saveInputId} type={"number"}
                                placeholder={"bloquear Id mercado"}/>
                     <Button label={"Bloquear"} onClick={this.blockMarket}/>
