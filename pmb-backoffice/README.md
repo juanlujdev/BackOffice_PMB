@@ -47,10 +47,19 @@ npm install primeicons --save
 
 yarn add axios
 
+yarn install
+
 ##Personal decisions
 
 I´ve decided activate market when we create a new event.
 
+##Libreries
+-primereact
+-chart.js
+-axios
+-react-router-dom
+-react-transition-group
+-primeicons
 
 ## Learn More
 
