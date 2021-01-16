@@ -111,9 +111,9 @@ export class BetsView extends React.Component {
         this.setState({mercado: mercadoInput.target.value},
             () => {
                 if (this.state.mercado.length > 0) {
-                    this.setState({stateInputEmail: true, stateInputEvento: true})
+                    this.setState({stateInputEmail: true, stateInputEvento: true});
                 } else {
-                    this.setState({stateInputEmail: false, stateInputEvento: false})
+                    this.setState({stateInputEmail: false, stateInputEvento: false});
                     this.bets();
                 }
             }

@@ -135,9 +135,9 @@ export class EventsView extends React.Component {
         this.setState({visitante: visitantInput.target.value},
             () => {
                 if (this.state.visitante.length > 0) {
-                    this.setState({stateInputLocal: true, stateInputFecha: true})
+                    this.setState({stateInputLocal: true, stateInputFecha: true});
                 } else {
-                    this.setState({stateInputLocal: false, stateInputFecha: false})
+                    this.setState({stateInputLocal: false, stateInputFecha: false});
                     this.getInfoEvent();
                 }
             }
@@ -209,7 +209,7 @@ export class EventsView extends React.Component {
         this.setState({postByLocal: eventInput.target.value});
     }
     insertByVisitor = (eventInput) => {
-        this.setState({postByVisitor: eventInput.target.value})
+        this.setState({postByVisitor: eventInput.target.value});
     }
     deleteEvent = () => {
         axios.delete('https://localhost:44301/api/eventos?id=' + this.state.deleteEvent).then((resultRequest) => {

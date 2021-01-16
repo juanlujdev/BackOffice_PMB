@@ -133,7 +133,6 @@ export class UsersView extends React.Component {
             });
         }
         if (this.state.email !== '') {
-            console.log('El mail es: ' + this.state.email)
             axios.get('https://localhost:44301/api/usuarios?email=' + this.state.email).then((resultRequest) => {
                 if (resultRequest.data.length > 0) {
                     this.setState({userInfoData: resultRequest.data});
@@ -203,7 +202,7 @@ export class UsersView extends React.Component {
         this.setState({changeNewPsswrd: eventInput.target.value});
     }
     changeByNewPsswrd2 = (eventInput) => {
-        this.setState({changeNewPsswrd2: eventInput.target.value})
+        this.setState({changeNewPsswrd2: eventInput.target.value});
     }
     deleteUser = () => {
         axios.delete('https://localhost:44301/api/usuarios?usuarioId=' + this.state.deleteEmail).then((resultRequest) => {
@@ -226,14 +225,14 @@ export class UsersView extends React.Component {
         this.setState({checked1: !this.state.checked1},
             () => {
                 if (this.state.checked1 === true) {
-                    this.setState({hide: false, hide2: true})
+                    this.setState({hide: false, hide2: true});
                     if (this.state.checked2 === true) {
-                        this.setState({checked2: false})
+                        this.setState({checked2: false});
                     }
                 }
                 //si no lo pongo no mq quita la visualizacion de eliminar cuando lo descklico
                 if (this.state.checked1 === false) {
-                    this.setState({hide: true})
+                    this.setState({hide: true});
                 }
                 if (this.state.checked2 === true) {
                     this.setState({hide: true, hide2: false});
@@ -251,9 +250,9 @@ export class UsersView extends React.Component {
         this.setState({checked2: !this.state.checked2},
             () => {
                 if (this.state.checked2 === true) {
-                    this.setState({hide2: false, hide: true})
+                    this.setState({hide2: false, hide: true});
                 } else {
-                    this.setState({hide2: true, hide: true})
+                    this.setState({hide2: true, hide: true});
                 }
             })
     }
